@@ -1,10 +1,12 @@
+file = './api/data.json'
 const chart = document.querySelector('.graph')
 const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
 const currentDay = new Date().getDay()
 
 function createChart() {
-    async function getData() {
-        const rawData = await fetch('../api/data.json')
+    getData(file)
+    async function getData(file) {
+        const rawData = await fetch(file)
         const JSONdata = await rawData.json()
         for (let i = 0; i < JSONdata.length; i++) {
             const chartData = JSONdata[i];
@@ -22,6 +24,7 @@ function createChart() {
             const chartDiv = document.createElement('div');
             const day = document.createElement('p');
             day.innerText = chartData.day;
+            day.style = `margin-bottom:10px;`
             chartWrapDiv.appendChild(chartDiv)
             chartWrapDiv.appendChild(day)
             chartDiv.classList.add('chart')
@@ -42,5 +45,4 @@ function createChart() {
         }
     }
 }
-getData()
 createChart()
