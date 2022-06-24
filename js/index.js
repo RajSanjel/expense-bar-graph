@@ -1,4 +1,4 @@
-file = '../api/data.json'
+file = '/api/data.json'
 const chart = document.querySelector('.graph')
 const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
 const currentDay = new Date().getDay()
